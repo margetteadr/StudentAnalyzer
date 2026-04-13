@@ -19,18 +19,20 @@ import java.util.ArrayList;
               students.add(new Student("Alessandra", 45));
                students.add(new Student("Parnian", 78));
 
-            StudentAnalyzer sa = new StudentAnalyzer();
+          
+StudentAnalyzer sa = new StudentAnalyzer();
             System.out.println("Setup complete!");
             System.out.println("Number of students above 70: " + sa.countAbove(students, 70));
             sa.removeFailing(students, 60);
             System.out.println("After failing students removed: " + (students.size()));
             System.out.println("Top student: " + sa.getTopStudent(students).getname() + " with marks: " + sa.getTopStudent(students).getmarks());
 
-         ArrayList<Student> topList = sa.getTopStudents(students, 80);
+            ArrayList<Student> topList = sa.getTopStudents(students, 80);
             System.out.println("Top students (80+):");
             for (int i = 0; i < topList.size(); i++) {
                 System.out.println(topList.get(i).getname() + " with marks: " + topList.get(i).getmarks());
-
+                 System.out.println("Has duplicates: " + sa.hasDuplicates(students));
+            }
           
 
     public void removeFailing(ArrayList<Student> students, int passMark) {
