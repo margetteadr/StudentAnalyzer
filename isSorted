@@ -88,6 +88,14 @@ ArrayList<Student> topList = sa.getTopStudents(students, 80);
 }
   return topStudents;
 }
+public boolean isSorted(ArrayList<Student> students) {
+    for (int i = 0; i < students.size() - 1; i++) {
+        if (students.get(i).getmarks() > students.get(i + 1).getmarks()) {
+            return false;
+        }
+    }
+    return true;
+}
 static class Student {
     private String name;
     private int marks;
