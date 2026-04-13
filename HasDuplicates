@@ -33,7 +33,17 @@ StudentAnalyzer sa = new StudentAnalyzer();
                 System.out.println(topList.get(i).getname() + " with marks: " + topList.get(i).getmarks());
                  System.out.println("Has duplicates: " + sa.hasDuplicates(students));
             }
-          
+
+        private String hasDuplicates(ArrayList<Student> students) {
+        for (int i = 0; i < students.size(); i++) {
+            for (int j = i + 1; j < students.size(); j++) {
+                if (students.get(i).getname().equals(students.get(j).getname())) {
+                    return "Yes";
+                }
+            }
+        }
+        return "No";
+    }
 
     public void removeFailing(ArrayList<Student> students, int passMark) {
         for (int i = students.size() - 1; i >= 0; i--) {
