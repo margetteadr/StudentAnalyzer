@@ -1,0 +1,20 @@
+package extensions;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
+  public class StudentAnalyzer {
+
+    public static void main (String[] args) {
+
+        ArrayList<Student> students = new ArrayList<>();
+        students.add(new Student("Margette", 100));
+        students.add(new Student("Sofia", 90));
+         students.add(new Student("Jamila", 70));
+          students.add(new Student("Princess", 85));
+           students.add(new Student("Sara", 67));
+            students.add(new Student("Fatima", 96));
+            students.add(new Student("Jaiyana", 55));
+             students.add(new Student("Amalia", 80));
+              students.add(new Student("Alessandra", 45));
+               students.add(new Student("Parnian", 78));
