@@ -73,7 +73,8 @@ ArrayList<Student> topList = sa.getTopStudents(students, 80);
             System.out.println("Number of improving pairs: " + sa.countImprovingPairs(students));
     }
 }
- 
+  return topStudents;
+}
 static class Student {
     private String name;
     private int marks;
