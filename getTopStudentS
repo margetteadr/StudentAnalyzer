@@ -130,3 +130,13 @@ public Student getTopStudent() {
     return top;
 
 }
+public ArrayList<Student> getTopStudents(int threshold) {
+    ArrayList<Student> topStudents = new ArrayList<>();
+    for (int i = 0; i < students.size(); i++) {
+        Student student = students.get(i);
+        if (student.getmarks() > threshold) {
+            topStudents.add(student);
+        }
+    }
+    return topStudents;
+}
