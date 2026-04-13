@@ -19,6 +19,13 @@ import java.util.ArrayList;
               students.add(new Student("Alessandra", 45));
                students.add(new Student("Parnian", 78));
 
+StudentAnalyzer sa = new StudentAnalyzer();
+            System.out.println("Setup complete!");
+            System.out.println("Number of students above 70: " + sa.countAbove(students, 70));
+            sa.removeFailing(students, 60);
+            System.out.println("After failing students removed: " + (students.size()));
+            System.out.println("Top student: " + sa.getTopStudent(students).getname() + " with marks: " + sa.getTopStudent(students).getmarks());
+
 
 class Analyzer {
 
