@@ -1,0 +1,75 @@
+package extensions;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
+  public class StudentAnalyzer {
+
+    public static void main (String[] args) {
+
+        ArrayList<Student> students = new ArrayList<>();
+        students.add(new Student("Margette", 100));
+        students.add(new Student("Sofia", 90));
+         students.add(new Student("Jamila", 70));
+          students.add(new Student("Princess", 85));
+           students.add(new Student("Sara", 67));
+            students.add(new Student("Fatima", 96));
+            students.add(new Student("Jaiyana", 55));
+             students.add(new Student("Amalia", 80));
+              students.add(new Student("Alessandra", 45));
+               students.add(new Student("Parnian", 78));
+
+            StudentAnalyzer sa = new StudentAnalyzer();
+            System.out.println("Setup complete!");
+            System.out.println("Number of students above 70: " + sa.countAbove(students, 70));
+            sa.removeFailing(students, 60);
+            System.out.println("After failing students removed: " + (students.size()));
+            System.out.println("Top student: " + sa.getTopStudent(students).getname() + " with marks: " + sa.getTopStudent(students).getmarks());
+
+          
+}
+ 
+static class Student {
+    private String name;
+    private int marks;
+
+    public Student(String name, int marks) {
+        this.name = name;
+        this.marks = marks;
+    }
+    public String getname() {
+        return name;
+    }
+    public int getmarks() {
+        return marks;
+    }
+    public void setMarks(int marks) {
+        this.marks = marks;
+    }
+    
+}
+
+class Analyzer {
+
+    private ArrayList<Student> students;
+    public Analyzer(ArrayList<Student> students) {
+            this.students = students;
+        }
+    
+        public int countAbove(int threshold) {
+            int count = 0;
+            for (int i = 0; i < students.size(); i++) {
+                Student student = students.get(i);
+                if (student.getmarks() > threshold) {
+                    count++;
+                }
+            }
+            return count;
+        }
+public void removeFailing(int passMark) {
+    for (int i = students.size() - 1; i >= 0; i--) {
+        if (students.get(i).getmarks() < passMark) {
+            students.remove(i);
+        }
+    }
+}
