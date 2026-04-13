@@ -63,7 +63,15 @@ public Student getTopStudent(ArrayList<Student> students) {
     return top;
 }
 
-
+ArrayList<Student> topList = sa.getTopStudents(students, 80);
+            System.out.println("Top students (80+):");
+            for (int i = 0; i < topList.size(); i++) {
+                System.out.println(topList.get(i).getname() + " with marks: " + topList.get(i).getmarks());
+                 System.out.println("Has duplicates: " + sa.hasDuplicates(students));
+            }
+            System.out.println("Is sorted: " + sa.isSorted(students));
+            System.out.println("Number of improving pairs: " + sa.countImprovingPairs(students));
+    }
 }
  
 static class Student {
