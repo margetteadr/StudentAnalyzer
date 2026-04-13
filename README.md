@@ -15,19 +15,18 @@ The program uses ArrayList traversal and conditional logic to perform different 
 
 # Sample Output
 Count above 70: 6
-After removing failing, size: 7
-Top student: Emma 95
+After removing failing: 8
+Top student: Margette, 100
 
 Top students (80+):
-Alice 80
-Alice 90
-Liam 85
-Emma 95
-Mia 88
+Margette
+Sofia
+Princess
+Fatima
 
-Has duplicates: true
+Has duplicates: false
 Is sorted: false
-Improving pairs: 5
+Improving pairs: 2
 
 # Challenges Faced
 One challenge was understanding how to properly traverse an ArrayList and apply conditions to each object. Another challenge was removing elements safely without skipping values, which required looping backwards. Implementing nested loops for duplicate detection was also difficult at first. Additionally, ensuring that all methods worked correctly together and debugging errors took time and careful testing.
