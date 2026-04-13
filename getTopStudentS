@@ -26,6 +26,11 @@ import java.util.ArrayList;
             System.out.println("After failing students removed: " + (students.size()));
             System.out.println("Top student: " + sa.getTopStudent(students).getname() + " with marks: " + sa.getTopStudent(students).getmarks());
 
+         ArrayList<Student> topList = sa.getTopStudents(students, 80);
+            System.out.println("Top students (80+):");
+            for (int i = 0; i < topList.size(); i++) {
+                System.out.println(topList.get(i).getname() + " with marks: " + topList.get(i).getmarks());
+
           
 
     public void removeFailing(ArrayList<Student> students, int passMark) {
