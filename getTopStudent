@@ -105,3 +105,14 @@ public void removeFailing(int passMark) {
         }
     }
 }
+
+public Student getTopStudent() {
+    Student top = students.get(0);
+    for (int i = 1; i < students.size(); i++) {
+        if (students.get(i).getmarks() > top.getmarks()) {
+            top = students.get(i);
+        }
+    }
+    return top;
+
+}
