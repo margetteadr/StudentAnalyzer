@@ -1,0 +1,202 @@
+package extensions;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
+  public class StudentAnalyzer {
+
+    public static void main (String[] args) {
+
+        ArrayList<Student> students = new ArrayList<>();
+        students.add(new Student("Margette", 100));
+        students.add(new Student("Sofia", 90));
+         students.add(new Student("Jamila", 70));
+          students.add(new Student("Princess", 85));
+           students.add(new Student("Sara", 67));
+            students.add(new Student("Fatima", 96));
+            students.add(new Student("Jaiyana", 55));
+             students.add(new Student("Amalia", 80));
+              students.add(new Student("Alessandra", 45));
+               students.add(new Student("Parnian", 78));
+
+            StudentAnalyzer sa = new StudentAnalyzer();
+            System.out.println("Setup complete!");
+            System.out.println("Number of students above 70: " + sa.countAbove(students, 70));
+            sa.removeFailing(students, 60);
+            System.out.println("After failing students removed: " + (students.size()));
+            System.out.println("Top student: " + sa.getTopStudent(students).getname() + " with marks: " + sa.getTopStudent(students).getmarks());
+
+            ArrayList<Student> topList = sa.getTopStudents(students, 80);
+            System.out.println("Top students (80+):");
+            for (int i = 0; i < topList.size(); i++) {
+                System.out.println(topList.get(i).getname() + " with marks: " + topList.get(i).getmarks());
+                 System.out.println("Has duplicates: " + sa.hasDuplicates(students));
+            }
+            System.out.println("Is sorted: " + sa.isSorted(students));
+            System.out.println("Number of improving pairs: " + sa.countImprovingPairs(students));
+    }
+    
+    private String hasDuplicates(ArrayList<Student> students) {
+        for (int i = 0; i < students.size(); i++) {
+            for (int j = i + 1; j < students.size(); j++) {
+                if (students.get(i).getname().equals(students.get(j).getname())) {
+                    return "Yes";
+                }
+            }
+        }
+        return "No";
+    }
+
+    public void removeFailing(ArrayList<Student> students, int passMark) {
+        for (int i = students.size() - 1; i >= 0; i--) {
+            if (students.get(i).getmarks() < passMark) {
+                students.remove(i);
+            }
+        }
+    }
+
+    public int countAbove(ArrayList<Student> students, int threshold) {
+        int count = 0;
+        for (int i = 0; i < students.size(); i++) {
+            Student student = students.get(i);
+            if (student.getmarks() > threshold) {
+                count++;    
+            }
+        }
+        return count;
+       
+    }
+  
+public Student getTopStudent(ArrayList<Student> students) {
+    Student top = students.get(0);
+    for (int i = 1; i < students.size(); i++) {
+        if (students.get(i).getmarks() > top.getmarks()) {
+            top = students.get(i);
+        }
+    }
+    return top;
+}
+
+public ArrayList<Student> getTopStudents(ArrayList<Student> students, int threshold) {
+    ArrayList<Student> topStudents = new ArrayList<>();
+    for (int i = 0; i < students.size(); i++) {
+        Student student = students.get(i);
+        if (student.getmarks() > threshold) {
+            topStudents.add(student);
+        }
+    }
+    return topStudents;
+}
+public boolean isSorted(ArrayList<Student> students) {
+    for (int i = 0; i < students.size() - 1; i++) {
+        if (students.get(i).getmarks() > students.get(i + 1).getmarks()) {
+            return false;
+        }
+    }
+    return true;
+}
+
+private int countImprovingPairs(ArrayList<Student> students) {
+    int count = 0;
+    for (int i = 0; i < students.size() - 1; i++) {
+        if (students.get(i).getmarks() < students.get(i + 1).getmarks()) {
+            count++;
+        }
+    }
+    return count;
+}
+ 
+static class Student {
+    private String name;
+    private int marks;
+
+    public Student(String name, int marks) {
+        this.name = name;
+        this.marks = marks;
+    }
+    public String getname() {
+        return name;
+    }
+    public int getmarks() {
+        return marks;
+    }
+    public void setMarks(int marks) {
+        this.marks = marks;
+    }
+    
+}
+
+class Analyzer {
+
+    private ArrayList<Student> students;
+    public Analyzer(ArrayList<Student> students) {
+            this.students = students;
+        }
+    
+        public int countAbove(int threshold) {
+            int count = 0;
+            for (int i = 0; i < students.size(); i++) {
+                Student student = students.get(i);
+                if (student.getmarks() > threshold) {
+                    count++;
+                }
+            }
+            return count;
+        }
+public void removeFailing(int passMark) {
+    for (int i = students.size() - 1; i >= 0; i--) {
+        if (students.get(i).getmarks() < passMark) {
+            students.remove(i);
+        }
+    }
+}
+public Student getTopStudent() {
+    Student top = students.get(0);
+    for (int i = 1; i < students.size(); i++) {
+        if (students.get(i).getmarks() > top.getmarks()) {
+            top = students.get(i);
+        }
+    }
+    return top;
+
+}
+public ArrayList<Student> getTopStudents(int threshold) {
+    ArrayList<Student> topStudents = new ArrayList<>();
+    for (int i = 0; i < students.size(); i++) {
+        Student student = students.get(i);
+        if (student.getmarks() > threshold) {
+            topStudents.add(student);
+        }
+    }
+    return topStudents;
+}
+public boolean hasDuplicates() {
+    for (int i = 0; i < students.size(); i++) {
+        for (int j = i + 1; j < students.size(); j++) {
+            if (students.get(i).getname().equals(students.get(j).getname())) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+public boolean isSorted() {
+    for (int i = 0; i < students.size() - 1; i++) {
+        if (students.get(i).getmarks() > students.get(i + 1).getmarks()) {
+            return false;
+        }
+    }
+    return true;
+}
+public int countImprovingPairs() {
+    int count = 0;
+    for (int i = 0; i < students.size() - 1; i++) {
+        if (students.get(i).getmarks() < students.get(i + 1).getmarks()) {
+            count++;
+        }
+    }
+    return count;
+}
+}
+  }
+
